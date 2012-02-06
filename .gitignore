@@ -1,0 +1,8 @@
+*.pyc
+
+db/*
+nymdesign/config/PROD_SETTINGS.py
+nymdesign/portfolio/fixtures/*
+nymdesign/templates/googlehostedservice.html
+nymdesign/urls.py
+static_media/*
