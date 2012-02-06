@@ -1,0 +1,12 @@
+<!-- start: category column -->
+<div id="category_project_listing">
+	{% for c in category_projects %}
+		{% ifequal c p %}
+			<a href="{{ c.get_absolute_url }}" class="selected">{{ c.name }}</a>
+		{% else %}
+			<a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+		{% endifequal %}
+	{% endfor %}
+</div>
+<div style="height:40px;"></div>
+<!-- end: category column -->

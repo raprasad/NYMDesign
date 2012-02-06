@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block addition_header_info %}
+<script language="javascript" src="{{ MEDIA_URL }}scripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script language="javascript" src="{{ MEDIA_URL }}scripts/jq_email.js" type="text/javascript"></script>
+<style type="text/css">
+	
+</style>
+{% endblock %}
+
+{% block left_menu %}{% endblock %}
+
+{% block main_content %}
+<!-- color band -->
+<div style="background-color:#476d7c; height:6px;"></div>
+
+<!-- project name -->
+<h2 style="background-color:#e3e8ec;" class="project_name">{{ title }}</h2>
+
+<!-- category images -->
+<div id="contact_info" style="padding-bottom:200px;">We would love to hear from you!
+	<br />Please leave us a message at <span class='mlink'>nilou (at) nymdesign (dot) com</span>
+</div>
+
+
+{% endblock %}
+
