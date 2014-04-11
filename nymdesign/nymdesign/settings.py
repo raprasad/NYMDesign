@@ -81,6 +81,9 @@ TEMPLATE_DIRS = settings.TEMPLATE_DIRS
 
 
 INSTALLED_APPS = settings.INSTALLED_APPS
+
+ALLOWED_HOSTS = settings.ALLOWED_HOSTS
+
 """ (
 	'django.contrib.admin',
     'django.contrib.auth',
