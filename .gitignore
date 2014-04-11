@@ -1,6 +1,7 @@
 *.pyc
 config_notes/*
 test_static_serve/*
+nymdesign/nymdesign/settings_prod.py
 nymdesign/nymdesign/config/*
 nymdesign/nymdesign/urls_prod*
 db/*
