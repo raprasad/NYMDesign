@@ -20,12 +20,7 @@ urlpatterns = patterns('',
     #url(r'^nym-admin', include(admin.site.urls)),
     url(r'^admin-site/', include(admin.site.urls)),
 
-   #  (r'^', include('nymdesign.portfolio.urls')),
-	(r'^media/(?P<path>.*)$', 'django.views.static.serve', 
-   {'document_root': settings.MEDIA_ROOT}),
-
-) 	+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) 
-#+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+)
 
 urlpatterns += patterns('',
     (r'^/?$', 'nymdesign.portfolio.views.view_homepage'),

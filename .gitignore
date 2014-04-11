@@ -1,6 +1,8 @@
 *.pyc
+config_notes/*
 test_static_serve/*
-nymdesgn/nymdesign/config/*
+nymdesign/nymdesign/config/*
+nymdesign/nymdesign/urls_prod*
 db/*
 nymdesign/config/PROD_SETTINGS.py
 nymdesign/portfolio/fixtures/*
