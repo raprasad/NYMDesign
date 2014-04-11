@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}{{ p.name }}{% endblock %}
+
+{% block addition_header_info %}
+<script language="javascript" src="{{ STATIC_URL }}scripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script language="javascript" src="{{ STATIC_URL }}scripts/jquery.cycle/jquery.cycle.all.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+
+function next_slide(currSlideElement, nextSlideElement, options, forwardFlag){
+	//alert(currSlideElement.src);
+}
+
+function set_control_buttons(){
+		$('#btn_pause').click(function(){
+			$('#btn_pause').hide();
+			$('#btn_play').show();
+			$('.slideshow').cycle('toggle');
+		});
+
+		$('#btn_play').click(function(){
+			$('#btn_play').hide();
+			$('#btn_pause').show();
+			$('.slideshow').cycle('toggle');
+		});
+
+		$('#btn_next').click(function(){
+			$('.slideshow').cycle('next');	
+		});
+
+		$('#btn_prev').click(function(){
+			$('.slideshow').cycle('prev');	
+		});
+		
+		$('#btn_play').hide();
+	
+}
+
+$(document).ready(function(){
+	
+	{% if image_count > 1 %}
+		set_control_buttons();
+		$('.slideshow').cycle({
+			fx: 'fade', // choose your transition type, ex: fade, scrollUp, shuffle, etc...
+	    	speed:    3000, // slide transition
+			timeout:  1000,	// between slide transitions
+			//continuous:true
+			//pause:1
+		});
+	{% endif %}
+ 
+
+});
+	  
+//-->
+</script>
+
+{% endblock %}
+
+{% block left_menu %}
+{% include "portfolio/left_category_proj_listing.html" %}
+
+{% endblock %}
+
+{% block main_content %}
+<!-- color band -->
+<div style="background-color:{{selected_media_type.band_color}}; height:6px;"></div>
+
+<!-- project name -->
+<h2 style="background-color:{{selected_media_type.project_bg_color}};" class="project_name">{{ p.name }}</h2>
+
+<!-- description -->
+<div id="proj_desc">{{ p.description|safe }}
+	{% if p.project_url %}
+		<div id="project_url_div"><i>Visit: <a href="{{ p.project_url }}" target="_blank">{{ p.project_url }}</a></i></div>
+	{% endif %}
+</div>
+
+<!-- controls -->
+<div style="padding:0 30px; margin:0px;">
+{% if image_count > 1 %}
+
+ <img src="{% static "imgs/controls/btn_back.gif" %}" id="btn_prev" class="control_btn_img" alt="back" />
+ <img src="{% static "imgs/controls/btn_pause.gif" %}" id="btn_pause" class="control_btn_img" alt="pause" />
+ <img src="{% static "imgs/controls/btn_play.gif" %}" id="btn_play" class="control_btn_img" alt="play" />
+ <img src="{% static "imgs/controls/btn_forward.gif" %}" id="btn_next" class="control_btn_img" alt="next" />
+{% endif %}
+	<div class="clear"></div>
+</div>
+{#<a href="javascript:pause_show();">pause</a> &nbsp;|&nbsp; <a href="javascript:resume_show();">resume</a>#}
+
+<!-- selected image -->
+<div id="proj_image" class="slideshow">
+	{% for pi in project_images	%}
+	<img src="{{ pi.regular.url }}" alt="{{ selected_image.label }}" style="width:{{ pi.iwidth }}px; height:{{ pi.iheight}}px; border:0;" />
+	{% endfor %}
+	<div class="clear"></div>
+</div>
+<!-- related projects -->
+{% if p.related_projects.count %}
+	<div id="related_proj_div">
+		<i>Related Project{{ p.related_projects.count|pluralize }}:</i><br />
+	
+		{% for rp in p.related_projects.all %}
+			{% if not forloop.first %}&nbsp;|&nbsp;{% endif %}
+			 <a href="{% url 'view_single_project' rp.slug %}">{{ rp }}</a>
+		{% endfor  %}
+	</div>
+{% else %}
+<div style="height:10px;"></div>
+
+{% endif %}
+{% endblock %}
+

@@ -1,0 +1,117 @@
+{% load staticfiles %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<meta http-equiv="Content-Language" content="en-us" />
+
+	<title>{% block title %}nymdesign{% endblock %}</title>
+
+	<meta name="ROBOTS" content="ALL" />
+	<meta http-equiv="imagetoolbar" content="no" />
+
+	<meta name="MSSmartTagsPreventParsing" content="true" />
+	<meta name="Copyright" content="" />
+
+	<meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
+	<meta name="description" content="" />
+
+<link href="{% static "css/nym.css" %}" rel="stylesheet" type="text/css" media="screen" />
+<link href="{% static "css/nym.css" %}" rel="stylesheet" type="text/css" media="print" />
+{% block addition_header_info %}{% endblock %}
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-19844966-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+<body>
+<div id="main_container">
+	<!-- table used to equalize column heights -->
+	<table class="col_layout_table" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+			<!-- 1st col -->
+			<td id="td_menu_col"><div id="div_menu_col"><!-- logo --><a href="{% url 'view_homepage' %}"><img src="{{ STATIC_URL }}imgs/logo/{% if selected_media_type %}{{ selected_media_type.logo_name }}{% else %}logo_home.gif{% endif %}" xid="logo_img" width="158" height="154" border="0" alt="NYMDesign" /></a>
+				{% block left_menu %}{% endblock %}
+				
+				<div style="height:60px;"></div>
+			</div></td><!-- end: 1st col -->
+			
+			<!-- 2nd col -->
+			<td id="td_center_col"><div id="div_center_col">
+				<!-- main menu -->
+				<div id="main_menu">
+					<a href="{% url 'view_clients' %}">Clients</a>
+					<a href="{% url 'view_about' %}">About</a>
+					<a href="{% url 'view_contact' %}">Contact</a>
+				</div>
+				<!-- media menu -->
+				<div id="media_menu">
+					{% for mt in media_types %}
+						{% ifequal mt selected_media_type %}
+							<a href="{% url 'view_media_category' mt.slug %}" class="selected">{{ mt.name|upper }}</a>
+						{% else %}
+							<a href="{% url 'view_media_category' mt.slug %}">{{ mt.name|upper }}</a>
+						{% endifequal %}
+					{% endfor %}
+				</div>
+				
+				{% block main_content %}
+				
+
+				
+				{% endblock %}
+				
+				{% block footer %}
+				 	{% if p %}
+						<!-- single project page -->
+						<div style="padding:10px 30px 10px 30px; background-color:{{ selected_media_type.project_bg_color }}; color:#9aafb8;">&copy; {% now "Y" %} nymdesign</div>
+					{% else %}
+						{% if category_projects %}
+						<div class="footer_category_page">&copy; {% now "Y" %} nymdesign</div>
+						{% else %}
+						<!-- info pages -->
+						<div class="footer_info_page">&copy; {% now "Y" %} nymdesign</div>
+						
+						{% endif %}
+					{% endif %}
+				{% endblock %}
+					
+				
+			</div></td><!-- end: 2nd col -->
+			<!-- 3rd col -->
+			<td id="td_right_col"><div id="div_right_col"><div style="background-color:#9aafb8;width:20px;height:35px;font-size:13px;margin:68px 0 0 0;">&nbsp;</div></td>
+		</tr>
+	</table>
+</div><!-- end: main container -->
+
+{% comment %}
+{% block footer %}
+<div style="position: relative; bottom: 60px;z-index:1;background-color:#9aafb8;font-size:11px; ">
+	<div id="copyright_container">
+		<div style="width:138px; background-color:#9aafb8;padding:5px 10px;color:#fff;float:left;">
+			&copy; {% now "Y" %} nymdesign
+		</div>
+		<div style="width:756px;;color:#333;float:left;padding:5px 0; background-color:{% block center_footer_col_color %}#fff{% endblock %};">&nbsp;</div>
+		<div style="width:20px; background-color:#9aafb8;padding:5px 0;color:#fff; float:left;">&nbsp;</div>
+		<div class="clear"></div>
+
+	</div>
+</div>
+
+{% endblock %}
+{% endcomment %}
+
+
+
+</body>
+</html>

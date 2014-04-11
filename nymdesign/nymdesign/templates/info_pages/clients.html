@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block addition_header_info %}
+<script language="javascript" src="{{ STATIC_URL }}scripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+<!--
+
+$(document).ready(function(){
+
+	$('a.show_projects').toggle(
+	                function(){                                
+	                    $(this).parent().find('div.project_list').show();
+	                },
+	                function(){                            
+	                    $(this).parent().find('div.project_list').hide();
+	                }
+	        );
+
+	$('a.close_proj_list').click(
+	                function(){                                
+	                    $(this).parent().hide();
+	                }
+      );
+
+
+});
+	  
+//-->
+</script>
+
+{% endblock %}
+
+{% block left_menu %}{% endblock %}
+
+{% block main_content %}
+<!-- color band -->
+<div style="background-color:#476d7c; height:6px;"></div>
+
+<!-- project name -->
+<h2 style="background-color:#e3e8ec;" class="project_name">{{ title }}</h2>
+
+<!-- category images -->
+<div id="proj_desc">
+	
+<p>We have an extensive repertoire of work for large multi-national corporations as well as local funky cultural groups. Below is a listing of some our clients by type.</p>
+<p><span style="letter-spacing:2px; font-weight:bold; font-size:13px;">BUSINESS &amp; GOVERNMENT</span>
+<br />Bright Eyes Optometry
+<br />Connecticut Workforce Development Council
+<br />Core Radiance
+<br />Deadalus Strategic Advising
+<br />Ed Stanley Engineers
+<br />Elias Arts
+<br />Kaufman Architects
+<br />MBTA (Massachusetts Bay Transportation Authority) / Boston T
+<br />Microsoft
+<br />Pfizer
+<br />Pickard Chilton Architects
+<br />Rising Financial
+<br />Savvy Biz Owner
+<br />Sid Espinosa Political Campaign/ Palo Alto Mayor
+<br />The Feedroom
+<br />UM Projects
+<br />Working Women's Network
+</p>
+
+<p><span style="letter-spacing:2px; font-weight:bold; font-size:13px;">CULTURAL &amp; ARTS</span>
+<br />Arts Council of New Haven
+<br />Artspace
+<br />Asian American Arts Alliance
+<br />Asian American Cultural Center
+<br />Bollingen Prize for Poetry
+<br />David M. Schwarz Architects / For People & Places
+<br />Faber Birren Collection of Books on Color
+<br />Leroy Anderson Foundation
+<br />Museum of the Moving Image
+<br />Neighborhood Music School
+<br />New York Public Library
+<br />Swallow Gallery
+<br />V&amp;A Museum / Lewis Walpole Library
+<br />Yale Art Gallery
+<br />Yale Center for British Art
+</p>
+
+<p><span style="letter-spacing:2px; font-weight:bold; font-size:13px;">EDUCATIONAL:</span>
+<br />Art &amp; Architecture Library
+<br />Ash Center for Democratic Governance &amp; Innovation
+<br />Association of Yale Alumni
+<br />Beinecke Rare Book &amp; Manuscript Library
+<br />Connecticut College
+<br />Corporate Social Responsibility Inititiative
+<br />Harvard Environmental Economics Program
+<br />Harvard Kennedy School
+<br />Harvard Policy on International Climate Agreements
+<br />Irving S. Gilmore Music Library
+<br />JFK50: Inaugaration Anniversary
+<br />Lewis Walpole Library
+<br />Mossavar Rahmani Center for Business &amp; Government
+<br />Redpath Seminar
+<br />Sterling Memorial Library
+<br />Tufts University
+<br />Yale Career Network
+<br />Yale Educational Travel
+<br />Yale RIS
+<br />Yale School of Management
+<br />Yale School of Public Health
+<br />Yale Summer Programs
+<br />Yale World Fellows Program
+</p>
+
+<p><span style="letter-spacing:2px; font-weight:bold; font-size:13px;">FILM &amp; THEATRE</span>
+<br />Desipina Productions
+<br />Disha
+<br />East is East / The New Group Theatre
+<br />Felucca Films
+<br />Hiding Divya Film
+</p>
+
+<p><span style="letter-spacing:2px; font-weight:bold; font-size:13px;">NON-PROFIT</span>
+<br />Aangan India
+<br />Amnesty International
+<br />GROOTS International
+<br />Mass Childrens Alliance
+<br />Saheli, Support &amp; Friendship for South Asian Women
+<br />SAKHI for South Asians
+<br />United Nations Population Fund
+</p>
+
+<p><span style="letter-spacing:2px; font-weight:bold; font-size:13px;">FOOD &amp; FASHION</span>
+<br />E&amp;E Haute Couture
+<br />First Fruits Eatery
+<br />Fleur de Sel Restaurant &amp; Leapfrog Caterers
+<br />Le Bon Marché Gourmet Grocery
+<br />Marjolaine's Pastry Shop
+<br />Ori Goldberg Jewelers
+<br />SCD Recipe
+<br />Shubrah Designs
+</p>
+
+<p><span style="letter-spacing:2px; font-weight:bold; font-size:13px;">GREEN &amp; ECO-CONSCIOUS</span>
+<br />Cityseed / Buy CT Grown
+<br />Consortium for Energy Policy Research, HKS
+<br />Forest Alert
+<br />Green Kettle Consulting
+<br />Under the Mango Tree
+<br />Yale School of Forestry &amp; Environmental Studies
+</p>
+
+	{#% for c in clients %}<div class="one_client">{{ c }}</div>{% endfor %#}
+	
+</div>
+
+{% endblock %}
