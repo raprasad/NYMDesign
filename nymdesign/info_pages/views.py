@@ -13,9 +13,9 @@ def view_contact(request):
         ,'media_types' : MediaType.objects.all().order_by('sort_order')
     }
 
-    return render_to_response(request,
-                              'info_pages/contact.html',
-                              lu)
+    return render(request,
+                  'info_pages/contact.html',
+                  lu)
 
 
 def view_about(request):
@@ -28,18 +28,18 @@ def view_about(request):
         ,'media_types' : MediaType.objects.all().order_by('sort_order')
     }
 
-    return render_to_response('info_pages/about.html', lu, context_instance=RequestContext(request))
+    return render(request,
+                  'info_pages/about.html',
+                  lu)
+
 
 def view_clients(request):
     """
     View Cients Page
     """
-
-    lu = {
-        'title' : 'Clients'
-        ,'clients' : Client.objects.all()
-        ,'media_types' : MediaType.objects.all().order_by('sort_order')
-    }
+    lu = dict(title='Clients',
+              clients=Client.objects.all(),
+              media_types=MediaType.objects.all().order_by('sort_order'))
 
     return render(request,
                   'info_pages/clients.html',
