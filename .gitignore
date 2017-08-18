@@ -8,7 +8,6 @@ db/*
 nymdesign/config/PROD_SETTINGS.py
 nymdesign/portfolio/fixtures/*
 nymdesign/templates/googlehostedservice.html
-nymdesign/urls.py
 static_media/media/project_regular/*
 test_serve_static/*
 uploaded_media/*
@@ -20,3 +19,5 @@ static_media/imgs/cat_strip/*
 static_media/imgs/menu/*
 static_media/imgs/hm_strip/*
 test_setup/*
+
+nymdesign/settings/webfaction.py

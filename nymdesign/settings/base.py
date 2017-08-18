@@ -1,24 +1,22 @@
-# Django settings for nymdesign project.
 import os, sys
 from os.path import dirname, join
-import socket
 
-BASE_DIR = dirname(dirname(__file__))
+BASE_DIR = dirname(dirname(dirname(__file__)))
 sys.path.append(BASE_DIR)
-if socket.gethostname() == 'some_prod_host.com':
-    import config.PROD_SETTINGS as settings
-else:
-    import config.laptop_settings as settings
 
-DEBUG = settings.DEBUG
-TEMPLATE_DEBUG = DEBUG
+DEBUG = True
 
-ADMINS = settings.ADMINS
+ADMINS = [('Raman Prasad', 'raprasad@gmail.com')]
 
 MANAGERS = ADMINS
 
 
-DATABASES = settings.DATABASES
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': join(BASE_DIR, 'test_setup', 'db2.sqlite3'),
+    }
+}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -37,26 +35,23 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = True
 
-# Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = settings.MEDIA_ROOT
 
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = settings.MEDIA_URL
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.7/howto/static-files/
+STATIC_URL = '/static/'
 
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = settings.ADMIN_MEDIA_PREFIX
+STATIC_ROOT = None  # Example: /scdrecipe.com/assets'
 
-STATIC_URL = settings.STATIC_URL
-STATICFILES_DIRS = settings.STATICFILES_DIRS
-STATIC_ROOT = settings.STATIC_ROOT
+# Static file sources
+STATICFILES_DIRS = [join(BASE_DIR, 'static')]
+
+MEDIA_ROOT = None   # Example: /scdrecipe.com/media'
+MEDIA_URL = '/media/'    # Example: http://media.example.com/
+
+PAGE_CACHE_TIME = 60 * 60 * 2 # 2 hours
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = settings.SECRET_KEY
+SECRET_KEY = 'secret-key-goes-here'
 
 # List of callables that know how to import templates from various sources.
 #TEMPLATE_LOADERS = (
@@ -65,16 +60,17 @@ SECRET_KEY = settings.SECRET_KEY
 #     'django.template.loaders.eggs.load_template_source',
 #)
 
-MIDDLEWARE_CLASSES = (
- 'django.contrib.sessions.middleware.SessionMiddleware',
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
+]
 
-ROOT_URLCONF = settings.ROOT_URLCONF
+ROOT_URLCONF = 'nymdesign.urls'
 
 TEMPLATES = [
     {
@@ -96,24 +92,24 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
             ],
         },
+        #'TEMPLATE_DEBUG' : True,
     },
 ]
 
-
-INSTALLED_APPS = settings.INSTALLED_APPS
-
-ALLOWED_HOSTS = settings.ALLOWED_HOSTS
-
-""" (
+INSTALLED_APPS =  (
 	'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    #'django.contrib.staticfiles',
+    'django.contrib.staticfiles',
     'django.contrib.sites',
     'nymdesign.portfolio',
     #'nymdesign.working_papers',
     'nymdesign.info_pages',
 )
-"""
+
+
+ALLOWED_HOSTS = [
+    '.nymdesign.com',
+]
