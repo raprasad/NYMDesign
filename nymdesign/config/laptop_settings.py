@@ -1,15 +1,14 @@
-import os
-import sys
+import os, sys
+from os.path import abspath, join, dirname
 
-CURRENT_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '../', '../'))
-sys.path.append(os.path.join(CURRENT_DIR, 'nymdesign'))
-
+CURRENT_DIR = abspath(join(dirname(__file__), '../', '../'))
+sys.path.append(join(CURRENT_DIR, 'nymdesign'))
 DEBUG = True
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(CURRENT_DIR, 'test_db', 'db2.sqlite3'),
+        'NAME': os.path.join(CURRENT_DIR, 'test_setup', 'db2.sqlite3'),
     }
 }
 
@@ -51,5 +50,4 @@ INSTALLED_APPS =  (
 
 ALLOWED_HOSTS =['localhost'\
 	,'127.0.0.1'\
-	] 
-
+	]

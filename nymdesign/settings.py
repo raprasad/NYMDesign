@@ -1,10 +1,10 @@
 # Django settings for nymdesign project.
 import os, sys
+from os.path import dirname, join
 import socket
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+BASE_DIR = dirname(dirname(__file__))
 sys.path.append(BASE_DIR)
-
 if socket.gethostname() == 'some_prod_host.com':
     import config.PROD_SETTINGS as settings
 else:
@@ -74,10 +74,30 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = settings.ROOT_URLCONF 
+ROOT_URLCONF = settings.ROOT_URLCONF
 
-TEMPLATE_DIRS = settings.TEMPLATE_DIRS
-# Don't forget to use absolute paths, not relative paths.
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            join(BASE_DIR, 'nymdesign', 'templates'),
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                # Insert your TEMPLATE_CONTEXT_PROCESSORS here or use this
+                # list if you haven't customized them:
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+            ],
+        },
+    },
+]
 
 
 INSTALLED_APPS = settings.INSTALLED_APPS

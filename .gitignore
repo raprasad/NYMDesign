@@ -19,3 +19,4 @@ nymdesign/nymdesign/config/HOME_SETTINGS.py
 static_media/imgs/cat_strip/*
 static_media/imgs/menu/*
 static_media/imgs/hm_strip/*
+test_setup/*
