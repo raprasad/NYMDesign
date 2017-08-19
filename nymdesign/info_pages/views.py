@@ -1,23 +1,24 @@
 from django.shortcuts import render
-from django.template import RequestContext
 from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.views.decorators.cache import cache_page
+from django.conf import settings
 from nymdesign.portfolio.models import *
 
+@cache_page(settings.PAGE_CACHE_TIME)
 def view_contact(request):
     """
     View Contact Page
     """
 
-    lu = {
-        'title' : 'Contact'
-        ,'media_types' : MediaType.objects.all().order_by('sort_order')
-    }
+    lu = {'title':'Contact',
+          'media_types':MediaType.objects.all().order_by('sort_order')}
 
     return render(request,
                   'info_pages/contact.html',
                   lu)
 
 
+@cache_page(settings.PAGE_CACHE_TIME)
 def view_about(request):
     """
     View About Page
@@ -33,6 +34,7 @@ def view_about(request):
                   lu)
 
 
+@cache_page(settings.PAGE_CACHE_TIME)
 def view_clients(request):
     """
     View Cients Page
