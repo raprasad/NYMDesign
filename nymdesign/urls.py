@@ -1,6 +1,7 @@
 from django.conf.urls import include, url
 from django.conf.urls.static import static
-import settings
+from django.conf import settings
+from nymdesign.portfolio import views as portfolio_views
 
 from django.contrib import admin
 admin.autodiscover()
@@ -20,8 +21,6 @@ urlpatterns = [
     #url(r'^nym-admin', include(admin.site.urls)),
     url(r'^admin-site/', include(admin.site.urls)),
 
-)
+    url(r'^$', portfolio_views.view_homepage, name='home'),
 
-urlpatterns += [
-    (r'^/?$', 'nymdesign.portfolio.views.view_homepage'),
 ]

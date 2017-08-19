@@ -108,6 +108,7 @@ INSTALLED_APPS =  (
     'nymdesign.info_pages',
 )
 
+STATICFILES_DIRS = [join(BASE_DIR, 'static'),]
 
 ALLOWED_HOSTS = [
     '.nymdesign.com',
