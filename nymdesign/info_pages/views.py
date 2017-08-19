@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.conf import settings
+from nymdesign.utils.helper_vars import PAGE_CACHE_TIME
 from django.views.decorators.cache import cache_page
 from nymdesign.portfolio.models import *
 
-@cache_page(settings.PAGE_CACHE_TIME)
+@cache_page(PAGE_CACHE_TIME)
 def view_contact(request):
     """
     View Contact Page
@@ -18,7 +19,7 @@ def view_contact(request):
                   lu)
 
 
-@cache_page(settings.PAGE_CACHE_TIME)
+@cache_page(PAGE_CACHE_TIME)
 def view_about(request):
     """
     View About Page
@@ -34,7 +35,7 @@ def view_about(request):
                   lu)
 
 
-@cache_page(settings.PAGE_CACHE_TIME)
+@cache_page(PAGE_CACHE_TIME)
 def view_clients(request):
     """
     View Cients Page

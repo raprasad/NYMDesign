@@ -1,10 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.conf import settings
+from nymdesign.utils.helper_vars import PAGE_CACHE_TIME
 from django.views.decorators.cache import cache_page
 from nymdesign.portfolio.models import *
 
-@cache_page(settings.PAGE_CACHE_TIME)
+@cache_page(PAGE_CACHE_TIME)
 def view_homepage(request):
     """
     View home page
@@ -22,7 +22,7 @@ def view_homepage(request):
                   'portfolio/homepage.html',
                   lu)
 
-@cache_page(settings.PAGE_CACHE_TIME)
+@cache_page(PAGE_CACHE_TIME)
 def view_media_category(request, media_type_slug):
     """
     View a category page for a media type
@@ -55,7 +55,7 @@ def view_media_category(request, media_type_slug):
                   lu)
 
 
-@cache_page(settings.PAGE_CACHE_TIME)
+@cache_page(PAGE_CACHE_TIME)
 def view_single_project(request, portfolio_slug, image_number=1):
     """
     View a single project including it's images and other projects in that category

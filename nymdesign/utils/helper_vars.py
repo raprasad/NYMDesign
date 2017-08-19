@@ -1,0 +1,2 @@
+
+PAGE_CACHE_TIME = 60 * 60 * 2
