@@ -1,7 +1,6 @@
 {% load staticfiles %}
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!doctype html>
+<html lang=en>
 <head>
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta http-equiv="Content-Language" content="en-us" />
@@ -16,7 +15,7 @@
 
 	<meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
 	<meta name="description" content="" />
-
+<meta name="google-site-verification" content="ExQpTMdnu6Ai-KnXHz5zUIAeeSnJ0nKG2HBwCFgnxkE" />
 <link href="{% static "css/nym.css" %}" rel="stylesheet" type="text/css" media="screen" />
 <link href="{% static "css/nym.css" %}" rel="stylesheet" type="text/css" media="print" />
 {% block addition_header_info %}{% endblock %}
@@ -30,10 +29,10 @@
 			<!-- 1st col -->
 			<td id="td_menu_col"><div id="div_menu_col"><!-- logo --><a href="{% url 'view_homepage' %}"><img src="{{ STATIC_URL }}imgs/logo/{% if selected_media_type %}{{ selected_media_type.logo_name }}{% else %}logo_home.gif{% endif %}" xid="logo_img" width="158" height="154" border="0" alt="NYMDesign" /></a>
 				{% block left_menu %}{% endblock %}
-				
+
 				<div style="height:60px;"></div>
 			</div></td><!-- end: 1st col -->
-			
+
 			<!-- 2nd col -->
 			<td id="td_center_col"><div id="div_center_col">
 				<!-- main menu -->
@@ -52,13 +51,13 @@
 						{% endifequal %}
 					{% endfor %}
 				</div>
-				
-				{% block main_content %}
-				
 
-				
+				{% block main_content %}
+
+
+
 				{% endblock %}
-				
+
 				{% block footer %}
 				 	{% if p %}
 						<!-- single project page -->
@@ -69,12 +68,12 @@
 						{% else %}
 						<!-- info pages -->
 						<div class="footer_info_page">&copy; {% now "Y" %} nymdesign</div>
-						
+
 						{% endif %}
 					{% endif %}
 				{% endblock %}
-					
-				
+
+
 			</div></td><!-- end: 2nd col -->
 			<!-- 3rd col -->
 			<td id="td_right_col"><div id="div_right_col"><div style="background-color:#9aafb8;width:20px;height:35px;font-size:13px;margin:68px 0 0 0;">&nbsp;</div></td>
