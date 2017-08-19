@@ -51,10 +51,16 @@ vim ~/.ssh/id_rsa.pub
 # copy to github
 ```
 
+## Open webfaction settings
+
+```
+vim /home/nymsite11/webapps/nym_django/NYMDesign/nymdesign/settings/webfaction.py
+```
+
 ## Clone scdrecipe repo
 
 ```
-cd /home/rpscd/webapps/scd_django/
+cd /home/nymsite11/webapps/nym_django/
 git clone git@github.com:raprasad/scdrecipe.com.git
 ```
 

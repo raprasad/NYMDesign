@@ -11,7 +11,9 @@ nymdesign/templates/googlehostedservice.html
 static_media/media/project_regular/*
 test_serve_static/*
 uploaded_media/*
-backup/*
+backup/sql/*
+backup/fixtures/*all*json
+
 nymdesign/test_db/*
 nymdesign/nymdesign/config/PROD_SETTINGS.py
 nymdesign/nymdesign/config/HOME_SETTINGS.py
