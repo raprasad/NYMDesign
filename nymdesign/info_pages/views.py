@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.views.decorators.cache import cache_page
 from django.conf import settings
+from django.views.decorators.cache import cache_page
 from nymdesign.portfolio.models import *
 
 @cache_page(settings.PAGE_CACHE_TIME)
