@@ -5,7 +5,7 @@ from nymdesign.portfolio.models import *
 class CategoryAdmin(admin.ModelAdmin):
     save_on_top = True
     fields = ('name', 'sort_order',)
-    
+
 admin.site.register(Category, CategoryAdmin)
 
 class MediaTypeAdmin(admin.ModelAdmin):
@@ -17,13 +17,13 @@ class ClientAdmin(admin.ModelAdmin):
     save_on_top = True
     list_display = ('name', 'description','category', 'website',)
     list_filter = ('category',)
-    
+
 admin.site.register(Client, ClientAdmin)
 
 class ProjectTagAdmin(admin.ModelAdmin):
     save_on_top = True
     list_display = ('name',)
-    
+
 admin.site.register(ProjectTag, ProjectTagAdmin)
 
 class HomePageImageInline(admin.TabularInline):
@@ -39,10 +39,13 @@ class CategoryPageImageInline(admin.TabularInline):
 class ProjectImageInline(admin.TabularInline):
     model = ProjectImage
     fields = ('project', 'label','regular', )
-    
+
 class ProjectAdmin(admin.ModelAdmin):
     save_on_top = True
-    list_display = ('name', 'get_absolute_url_for_admin','image_count', 'date', 'client','media_type', 'visible', 'update_date',)
+    list_display = ('name',
+                    'visible',
+                    'get_absolute_url_for_admin',
+                    'image_count', 'date', 'client','media_type', 'update_date',)
     search_fields = ('name',)
     list_filter = ('visible','is_showcase_item', 'client', 'media_type', 'tags', )
     inlines = (ProjectImageInline, CategoryPageImageInline, HomePageImageInline, )

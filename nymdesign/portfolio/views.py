@@ -64,9 +64,10 @@ def view_single_project(request, portfolio_slug, image_number=1):
 
     # retrieve the project
     try:
-        project = Project.objects.get(slug=portfolio_slug, visible=True)
+        project = Project.objects.get(slug=portfolio_slug,
+                                      visible=True)
     except:
-        return HttpResponse('project not found')
+        return HttpResponse('project not found: %s' % portfolio_slug)
 
     # retrieve the images
     project_images = project.get_image_list()
