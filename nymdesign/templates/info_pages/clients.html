@@ -10,23 +10,23 @@
 $(document).ready(function(){
 
 	$('a.show_projects').toggle(
-	                function(){                                
+	                function(){
 	                    $(this).parent().find('div.project_list').show();
 	                },
-	                function(){                            
+	                function(){
 	                    $(this).parent().find('div.project_list').hide();
 	                }
 	        );
 
 	$('a.close_proj_list').click(
-	                function(){                                
+	                function(){
 	                    $(this).parent().hide();
 	                }
       );
 
 
 });
-	  
+
 //-->
 </script>
 
@@ -43,106 +43,70 @@ $(document).ready(function(){
 
 <!-- category images -->
 <div id="proj_desc">
-	
-<p>We have an extensive repertoire of work for large multi-national corporations as well as local funky cultural groups. Below is a listing of some our clients by type.</p>
-<p><span style="letter-spacing:2px; font-weight:bold; font-size:13px;">BUSINESS &amp; GOVERNMENT</span>
-<br />Bright Eyes Optometry
-<br />Connecticut Workforce Development Council
-<br />Deadalus Strategic Advising
+
+<p>Below is a sample client list:</p>
+<p><span style="letter-spacing:2px; font-weight:bold; font-size:13px;">CORPORATE & SMALL BUSINESS</span>
 <br />Ed Stanley Engineers
-<br />Elias Arts
+<br />Elias Arts Sound Design
+<br />Fleur de Sel Restaurant &amp; Leapfrog Caterers
+<br />Green Kettle Consulting
 <br />Kaufman Architects
-<br />MBTA (Massachusetts Bay Transportation Authority) / Boston T
+<br />MBTA / Boston T
 <br />Microsoft
 <br />Pfizer
 <br />Pickard Chilton Architects
-<br />Sid Espinosa Political Campaign/ Palo Alto Mayor
-<br />The Feedroom
-<br />UM Projects
+<br />Shubrah / Eco-Fashion
+<br />Sid Espinosa Political Campaign / Palo Alto Mayor
+<br />UM Project
+<br />Under the Mango Tree
 <br />Working Women's Network
-<br />Western Connecticut Health Network
 </p>
 
 <p><span style="letter-spacing:2px; font-weight:bold; font-size:13px;">CULTURAL &amp; ARTS</span>
 <br />Arts Council of New Haven
-<br />Artspace
+<br />Artspace Gallery
 <br />Asian American Arts Alliance
-<br />Asian American Cultural Center at Yale
-<br />Bollingen Prize for Poetry
-<br />David M. Schwarz Architects / For People & Places
+<br />Cengage Learning Publishers
+<br />Hiding Divya Film
 <br />Leroy Anderson Foundation
+<br />Museum of Chinese in America
 <br />Museum of the Moving Image
 <br />Neighborhood Music School
 <br />Swallow Gallery
-<br />Yale Art Gallery
+<br />Swallowtail Press
 <br />Yale Center for British Art
 </p>
 
-<p><span style="letter-spacing:2px; font-weight:bold; font-size:13px;">EDUCATIONAL:</span>
-<br />Ash Center for Democratic Governance &amp; Innovation
+<p><span style="letter-spacing:2px; font-weight:bold; font-size:13px;">EDUCATIONAL</span>
+<br />Ash Center for Democratic Governance &amp; Innovation @ Harvard
 <br />Association of Yale Alumni
-<br />Beinecke Rare Book &amp; Manuscript Library
+<br />Beinecke Rare Book &amp; Manuscript Library @ Yale
+<br />Columbia University
 <br />Connecticut College
-<br />Harvard Environmental Economics Program
+<br />Foote School
 <br />Harvard Kennedy School
-<br />Harvard Policy on International Climate Agreements
-<br />Irving S. Gilmore Music Library at Yale / New York Public LIbrary 
-<br />JFK50: Inaugaration Anniversary
-<br />Lewis Walpole Library / V&amp;A Museum
-<br />Mossavar Rahmani Center for Business &amp; Government
-<br />Redpath Seminar
-<br />Yale University Libraries / Sterling Memorial Library
+<br />Harvard Medical School
+<br />Stanford University
 <br />Tufts University
-<br />Yale Career Network
-<br />Yale Educational Travel
-<br />Yale RIS
 <br />Yale School of Management
 <br />Yale School of Public Health
-<br />Yale Summer Programs
-<br />Yale World Fellows Program
-</p>
-
-<p><span style="letter-spacing:2px; font-weight:bold; font-size:13px;">FILM &amp; THEATRE</span>
-<br />Arlington International Film Festival
-<br />Desipina Productions
-<br />Disha
-<br />East is East / The New Group Theatre
-<br />Felucca Films
-<br />Hiding Divya Film
+<br />Yale Forestry School
+<br />Yale University Library System / Sterling Memorial Library
 </p>
 
 <p><span style="letter-spacing:2px; font-weight:bold; font-size:13px;">NON-PROFIT</span>
 <br />Aangan India
 <br />Amnesty International
-<br />National Diaper Bank Network
-<br />GROOTS International
+<br />International Catholic Migration Commission
 <br />Massachusetts Childrens Alliance
-<br />Saheli, Support &amp; Friendship for South Asian Women
-<br />SAKHI for South Asians
+<br />Northeast Regional Children's Advocacy Center
+<br />Saheli for South Asian Women
+<br />United Nations Development Program
 <br />United Nations Population Fund
 </p>
 
-<p><span style="letter-spacing:2px; font-weight:bold; font-size:13px;">FOOD &amp; FASHION</span>
-<br />E&amp;E Haute Couture
-<br />First Fruits Eatery
-<br />Fleur de Sel Restaurant &amp; Leapfrog Caterers
-<br />Le Bon Marché Gourmet Grocery
-<br />Marjolaine's Pastry Shop
-<br />Ori Goldberg Jewelers
-<br />SCD Recipe
-<br />Shubrah Designs
-</p>
-
-<p><span style="letter-spacing:2px; font-weight:bold; font-size:13px;">GREEN &amp; ECO-CONSCIOUS</span>
-<br />Cityseed / Buy CT Grown
-<br />Consortium for Energy Policy Research, Harvard Kennedy School
-<br />Green Kettle Consulting
-<br />Under the Mango Tree
-<br />Yale School of Forestry &amp; Environmental Studies
-</p>
-
 	{#% for c in clients %}<div class="one_client">{{ c }}</div>{% endfor %#}
-	
+
 </div>
 
 {% endblock %}
