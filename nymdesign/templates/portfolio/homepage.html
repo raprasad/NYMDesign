@@ -13,7 +13,7 @@
 
 $(document).ready(function(){
 
-	
+
   /* set img strip hover bg */
   $('a.cat_img_lnk').hover( function(){
       $(this).css('opacity', '.5');
@@ -21,7 +21,7 @@ $(document).ready(function(){
    function(){
       $(this).css('opacity', '1');
    });
- 
+
 {% if selected_media_type.project_bg_color %}
   /* set center col bg color based on category */
  $('#td_center_col').css('background-color', '{{selected_media_type.project_bg_color}}');
@@ -29,7 +29,7 @@ $(document).ready(function(){
 {% endif %}
 
 });
-	  
+
 //-->
 </script>
 
